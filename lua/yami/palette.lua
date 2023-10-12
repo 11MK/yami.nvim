@@ -84,7 +84,7 @@ matrix = {
     diff_text = "#00FF00",
  }
 
-return cyberpunk
+return matrix
 -- dark = {
 -- 	black = "#181a1f",
 -- 	bg0 = "#282c34",
