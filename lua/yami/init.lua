@@ -11,6 +11,10 @@ function M.colorscheme()
 	require("yami.highlights").setup()
 end
 
+function M.load()
+  vim.api.nvim_command('colorscheme yami')
+end
+
 M.setup = require("yami.config").setup
 
 return M
