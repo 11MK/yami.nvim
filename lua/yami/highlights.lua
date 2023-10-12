@@ -1,5 +1,5 @@
 local p = require("yami.palette")
-local config = require('yami.config')
+local config = require("yami.config")
 local terminal = require("yami.terminal")
 
 local M = {}
@@ -10,16 +10,24 @@ local function load_highlights(highlights)
 	end
 end
 
+local function mergeTables()
+	for key, value in pairs(config.highlights) do
+		if value and type(value) == "string" and value:match("#%x%x%x%x%x%x") then
+			p[key] = value
+		end
+	end
+end
+
 local colors = {
-    LightGrey = {fg = p.light_grey},
-    Grey = {fg = p.grey},
-    Red = {fg = p.red},
-    Cyan = {fg = p.cyan},
-    Yellow = {fg = p.yellow},
-    Orange = {fg = p.orange},
-    Green = {fg = p.green},
-    Blue = {fg = p.blue},
-    Purple = {fg = p.purple}
+	LightGrey = { fg = p.light_grey },
+	Grey = { fg = p.grey },
+	Red = { fg = p.red },
+	Cyan = { fg = p.cyan },
+	Yellow = { fg = p.yellow },
+	Orange = { fg = p.orange },
+	Green = { fg = p.green },
+	Blue = { fg = p.blue },
+	Purple = { fg = p.purple },
 }
 
 M.highlights = {
@@ -91,7 +99,7 @@ M.highlights = {
 	NormalFloat = { fg = p.fg, bg = p.bg1 },
 
 	-- COMMON HIGHLIGHTS
-	String = { fg = p.green, },
+	String = { fg = p.green },
 	Character = colors.Orange,
 	Number = colors.Orange,
 	Float = colors.Orange,
@@ -99,31 +107,31 @@ M.highlights = {
 	Type = colors.Yellow,
 	Structure = colors.Yellow,
 	StorageClass = colors.Yellow,
-	Identifier = { fg = p.red, },
+	Identifier = { fg = p.red },
 	Constant = colors.Cyan,
 	PreProc = colors.Purple,
 	PreCondit = colors.Purple,
 	Include = colors.Purple,
-	Keyword = { fg = p.purple,  },
+	Keyword = { fg = p.purple },
 	Define = colors.Purple,
 	Typedef = colors.Purple,
 	Exception = colors.Purple,
-	Conditional = { fg = p.purple,  },
-	Repeat = { fg = p.purple,  },
+	Conditional = { fg = p.purple },
+	Repeat = { fg = p.purple },
 	Statement = colors.Purple,
 	Macro = colors.Red,
 	Error = colors.Purple,
 	Label = colors.Purple,
 	Special = colors.Red,
 	SpecialChar = colors.Red,
-	Function = { fg = p.blue, },
+	Function = { fg = p.blue },
 	Operator = colors.Purple,
 	Title = colors.Cyan,
 	Tag = colors.Green,
 	Delimiter = colors.LightGrey,
-	Comment = { fg = p.grey,  },
-	SpecialComment = { fg = p.grey,  },
-	Todo = { fg = p.red,  },
+	Comment = { fg = p.grey },
+	SpecialComment = { fg = p.grey },
+	Todo = { fg = p.red },
 
 	-- TreeSitter
 	["@annotation"] = { fg = p.fg },
@@ -131,7 +139,7 @@ M.highlights = {
 	["@attribute.typescript"] = colors.Blue,
 	["@boolean"] = colors.Orange,
 	["@character"] = colors.Orange,
-	["@comment"] = { fg = p.grey,  },
+	["@comment"] = { fg = p.grey },
 	["@conditional"] = { fg = p.purple },
 	["@constant"] = { fg = p.orange },
 	["@constant.builtin"] = { fg = p.orange },
@@ -145,9 +153,9 @@ M.highlights = {
 	["@function.builtin"] = { fg = p.cyan },
 	["@function.macro"] = { fg = p.cyan },
 	["@include"] = colors.Purple,
-	["@keyword"] = { fg = p.purple,  },
+	["@keyword"] = { fg = p.purple },
 	["@keyword.function"] = { fg = p.purple },
-	["@keyword.operator"] = { fg = p.purple,  },
+	["@keyword.operator"] = { fg = p.purple },
 	["@label"] = colors.Red,
 	["@method"] = { fg = p.blue },
 	["@namespace"] = colors.Yellow,
@@ -161,10 +169,10 @@ M.highlights = {
 	["@punctuation.delimiter"] = colors.LightGrey,
 	["@punctuation.bracket"] = colors.LightGrey,
 	["@punctuation.special"] = colors.Red,
-	["@repeat"] = { fg = p.purple,  },
-	["@string"] = { fg = p.green, },
-	["@string.regex"] = { fg = p.orange, },
-	["@string.escape"] = { fg = p.red, },
+	["@repeat"] = { fg = p.purple },
+	["@string"] = { fg = p.green },
+	["@string.regex"] = { fg = p.orange },
+	["@string.escape"] = { fg = p.red },
 	["@symbol"] = colors.Cyan,
 	["@tag"] = colors.Purple,
 	["@tag.attribute"] = colors.Yellow,
@@ -177,7 +185,7 @@ M.highlights = {
 	["@text.title"] = { fg = p.orange, bold = true },
 	["@text.literal"] = colors.Green,
 	["@text.uri"] = { fg = p.cyan, underline = true },
-	["@text.todo"] = { fg = p.red,  },
+	["@text.todo"] = { fg = p.red },
 	["@text.math"] = { fg = p.fg },
 	["@text.reference"] = colors.Blue,
 	["@text.environment"] = { fg = p.fg },
@@ -363,7 +371,10 @@ M.highlights = {
 	-- NVIM-TREE
 	NvimTreeNormal = { fg = p.fg, bg = config.transparent and p.none or p.bg_d },
 	NvimTreeVertSplit = { fg = p.bg_d, bg = config.transparent and p.none or p.bg_d },
-	NvimTreeEndOfBuffer = { fg = config.ending_tildes and p.bg2 or p.bg_d, bg = config.transparent and p.none or p.bg_d },
+	NvimTreeEndOfBuffer = {
+		fg = config.ending_tildes and p.bg2 or p.bg_d,
+		bg = config.transparent and p.none or p.bg_d,
+	},
 	NvimTreeRootFolder = { fg = p.orange, bold = true },
 	NvimTreeGitDirty = colors.Yellow,
 	NvimTreeGitNew = colors.Green,
@@ -447,11 +458,11 @@ M.highlights = {
 	MiniIndentscopeSymbol = { fg = p.grey },
 	MiniIndentscopePrefix = { nocombine = true }, -- Make it invisible
 	MiniJump = { fg = p.purple, underline = true, sp = p.purple },
-	MiniJump2dSpot = { fg = p.red, bold = true, nocombine = true},
+	MiniJump2dSpot = { fg = p.red, bold = true, nocombine = true },
 	MiniStarterCurrent = { nocombine = true },
 	MiniStarterFooter = { fg = p.dark_red, italic = true },
 	MiniStarterHeader = colors.Yellow,
-	MiniStarterInactive = { fg = p.grey,  },
+	MiniStarterInactive = { fg = p.grey },
 	piniStarterItem = { fg = p.fg, bg = config.transparent and p.none or p.bg0 },
 	MiniStarterItemBullet = { fg = p.grey },
 	MiniStarterItemPrefix = { fg = p.yellow },
@@ -543,8 +554,8 @@ M.highlights = {
 	phpNumber = colors.Orange,
 	phpHereDoc = colors.Green,
 	phpNowDoc = colors.Green,
-	phpSCKeyword = { fg = p.purple,  },
-	phpFCKeyword = { fg = p.purple,  },
+	phpSCKeyword = { fg = p.purple },
+	phpFCKeyword = { fg = p.purple },
 	phpRegion = colors.Blue,
 
 	-- SCALA
@@ -553,7 +564,7 @@ M.highlights = {
 	scalaInterpolation = colors.Purple,
 	scalaTypeOperator = colors.Red,
 	scalaOperator = colors.Red,
-	scalaKeywordModifier = { fg = p.red,  },
+	scalaKeywordModifier = { fg = p.red },
 
 	-- LaTeX
 	latexTSInclude = colors.Blue,
@@ -583,15 +594,16 @@ M.highlights = {
 	vimNotation = colors.Red,
 	vimMapLhs = { fg = p.fg },
 	vimMapRhs = colors.Blue,
-	vimVar = { fg = p.fg, },
-	vimCommentTitle = { fg = p.light_grey,  },
+	vimVar = { fg = p.fg },
+	vimCommentTitle = { fg = p.light_grey },
 }
 
 function M.setup()
-    load_highlights(M.highlights)
-    if config.terminal_colors then
-        terminal.setup()
-    end
+	mergeTables()
+	load_highlights(M.highlights)
+	if config.terminal_colors then
+		terminal.setup()
+	end
 end
 
 return M
