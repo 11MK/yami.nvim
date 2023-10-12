@@ -271,7 +271,7 @@ M.highlights = {
 	CmpItemAbbrMatch = colors.Cyan,
 	CmpItemAbbrMatchFuzzy = { fg = p.cyan, underline = true },
 	CmpItemMenu = colors.LightGrey,
-	CmpItemKind = { fg = p.purple, config.cmp_itemkind_reverse, reverse = true },
+	CmpItemKind = { fg = p.purple, reverse = true },
 
 	-- WHICHKEY
 	WhichKey = colors.Red,
