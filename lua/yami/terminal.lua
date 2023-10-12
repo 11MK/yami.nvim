@@ -1,6 +1,6 @@
 local M = {}
 local config = require('yami.config')
-local p = require("tokyodark.palette")
+local p = require("yami.palette")
 
 function M.setup()
     if not config.term_colors then return end
