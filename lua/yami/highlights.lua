@@ -13,6 +13,7 @@ end
 local function mergeTables()
 	for key, value in pairs(config.highlights) do
 		if value and type(value) == "string" and value:match("#%x%x%x%x%x%x") then
+      print(value)
 			p[key] = value
 		end
 	end
