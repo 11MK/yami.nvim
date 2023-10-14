@@ -16,32 +16,32 @@ local default_config = {
 		variables = "none",
 	},
 	highlights = {
-		diff_add = false,
-		diff_delete = false,
-		diff_change = false,
-		diff_text = false,
-		black = false,
-		bg0 = false,
-		bg1 = false,
-		bg2 = false,
-		bg3 = false,
-		bg_d = false,
-		bg_blue = false,
-		bg_yellow = false,
-		fg = false,
-		purple = false,
-		green = false,
-		orange = false,
-		blue = false,
-		yellow = false,
-		cyan = false,
-		red = false,
-		grey = false,
-		light_grey = false,
-		dark_cyan = false,
-		dark_red = false,
-		dark_yellow = false,
-		dark_purple = false,
+		diff_add = "none",
+		diff_delete = "none",
+		diff_change = "none",
+		diff_text = "none",
+		black = "none",
+		bg0 = "none",
+		bg1 = "none",
+		bg2 = "none",
+		bg3 = "none",
+		bg_d = "none",
+		bg_blue = "none",
+		bg_yellow = "none",
+		fg = "none",
+		purple = "none",
+		green = "none",
+		orange = "none",
+		blue = "none",
+		yellow = "none",
+		cyan = "none",
+		red = "none",
+		grey = "none",
+		light_grey = "none",
+		dark_cyan = "none",
+		dark_red = "none",
+		dark_yellow = "none",
+		dark_purple = "none",
 	},
 }
 
@@ -59,7 +59,7 @@ local default_config = {
 -- end
 
 function config.setup(opts)
-  vim.tbl_deep_extend('keep', opts or {}, default_config)
+	vim.tbl_deep_extend("keep", opts or {}, default_config)
 end
 
 return setmetatable(config, { __index = default_config })
