@@ -59,7 +59,16 @@ local default_config = {
 -- end
 
 function config.setup(opts)
-	vim.tbl_deep_extend("keep", opts or {}, default_config)
+	for k, v in pairs(opts or {}) do
+		if type(v) == "table" then
+			config[k] = {}
+			for kk, vv in pairs(v) do
+				config[k][kk] = vv
+			end
+		else
+			config[k] = v
+		end
+	end
 end
 
 return setmetatable(config, { __index = default_config })
