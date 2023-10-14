@@ -10,14 +10,14 @@ local function load_highlights(highlights)
 	end
 end
 
-local function mergeTables()
-	for key, value in pairs(config.highlights) do
-		if value and type(value) == "string" and value:match("#%x%x%x%x%x%x") then
-      print(value)
-			p[key] = value
-		end
-	end
-end
+-- local function mergeTables()
+-- 	for key, value in pairs(config.highlights) do
+-- 		if value and type(value) == "string" and value:match("#%x%x%x%x%x%x") then
+--       print(value)
+-- 			p[key] = value
+-- 		end
+-- 	end
+-- end
 
 local colors = {
 	LightGrey = { fg = p.light_grey },
@@ -600,7 +600,7 @@ M.highlights = {
 }
 
 function M.setup()
-	mergeTables()
+	-- mergeTables()
 	load_highlights(M.highlights)
 	if config.terminal_colors then
 		terminal.setup()
