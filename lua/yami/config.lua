@@ -15,47 +15,20 @@ local default_config = {
 		strings = "none",
 		variables = "none",
 	},
-	highlights = {
-		diff_add = false,
-		diff_delete = false,
-		diff_change = false,
-		diff_text = false,
-		black = false,
-		bg0 = false,
-		bg1 = false,
-		bg2 = false,
-		bg3 = false,
-		bg_d = false,
-		bg_blue = false,
-		bg_yellow = false,
-		fg = false,
-		purple = false,
-		green = false,
-		orange = false,
-		blue = false,
-		yellow = false,
-		cyan = false,
-		red = false,
-		grey = false,
-		light_grey = false,
-		dark_cyan = false,
-		dark_red = false,
-		dark_yellow = false,
-		dark_purple = false,
-	},
+	highlights = {},
 }
 
--- function config.setup(opts)
--- 	for k, v in pairs(opts or {}) do
--- 		if type(v) == "table" then
--- 			config[k] = {}
--- 			for kk, vv in pairs(v) do
--- 				config[k][kk] = vv
--- 			end
--- 		else
--- 			config[k] = v
--- 		end
--- 	end
--- end
+function config.setup(opts)
+    for k, v in pairs(opts or {}) do
+        if type(v) == "table" then
+            config[k] = {}
+            for kk, vv in pairs(v) do
+                config[k][kk] = vv
+            end
+        else
+            config[k] = v
+        end
+    end
+end
 
 return setmetatable(config, { __index = default_config })

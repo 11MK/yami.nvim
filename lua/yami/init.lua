@@ -1,5 +1,4 @@
 local M = {}
-local config = require("yami.config")
 
 function M.colorscheme()
 	vim.cmd("hi clear")
@@ -16,12 +15,6 @@ function M.load()
 	vim.api.nvim_command("colorscheme yami")
 end
 
-function M.setup(opts)
-	for k, v in pairs(opts.highlights or {}) do
-		if v ~= false then
-			config.highlights[k] = v
-		end
-	end
-end
+M.setup = require("yami.config").setup
 
 return M
