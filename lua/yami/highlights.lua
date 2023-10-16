@@ -375,7 +375,6 @@ M.highlights = {
 	NvimTreeIndentMarker = { fg = p.fg },
 	NvimTreeImageFile = { fg = p.dark_purple },
 	NvimTreeSymlink = colors.Purple,
-	NvimTreeFolderName = {p.tan},
 
 	-- TELESCOPE
 	TelescopeBorder = colors.Red,
